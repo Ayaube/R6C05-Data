@@ -1,11 +1,11 @@
-2025-02-04 04:34:49,181 - __main__ - INFO - Début de l'analyse des données bancaires
-2025-02-04 04:34:49,181 - data_loader - INFO - Chargement des données depuis SQLite
-2025-02-04 04:34:49,181 - data_loader - INFO - Tentative de connexion à la base de données: /Users/aubepine/Documents/Code/R6C05 Data/SQLite/bankdata.db
-2025-02-04 04:34:49,184 - data_loader - INFO - Connexion réussie. Nombre de transactions: 594643
-2025-02-04 04:34:49,184 - data_loader - INFO - Exécution de la requête SQL
-2025-02-04 04:34:49,738 - data_loader - INFO - Données chargées avec succès: 594643 lignes
-2025-02-04 04:34:49,874 - data_loader - INFO - Données chargées et nettoyées avec succès: 594643 lignes
-2025-02-04 04:34:49,921 - __main__ - INFO - Informations sur le dataset :
+2025-02-04 04:51:09,810 - __main__ - INFO - Début de l'analyse des données bancaires
+2025-02-04 04:51:09,810 - data_loader - INFO - Chargement des données depuis SQLite
+2025-02-04 04:51:09,810 - data_loader - INFO - Tentative de connexion à la base de données: /Users/aubepine/Documents/Code/R6C05 Data/SQLite/bankdata.db
+2025-02-04 04:51:09,813 - data_loader - INFO - Connexion réussie. Nombre de transactions: 594643
+2025-02-04 04:51:09,813 - data_loader - INFO - Exécution de la requête SQL
+2025-02-04 04:51:10,337 - data_loader - INFO - Données chargées avec succès: 594643 lignes
+2025-02-04 04:51:10,464 - data_loader - INFO - Données chargées et nettoyées avec succès: 594643 lignes
+2025-02-04 04:51:10,511 - __main__ - INFO - Informations sur le dataset :
 total_transactions      594643.00
 unique_customers          4112.00
 unique_merchants            50.00
@@ -13,28 +13,30 @@ total_amount          22531103.73
 fraud_count               7200.00
 fraud_rate                   1.21
 dtype: float64
-2025-02-04 04:34:49,921 - descriptive_analysis - INFO - Début de l'analyse descriptive
-2025-02-04 04:34:50,414 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/descriptive_category_analysis_20250204.csv
-2025-02-04 04:34:50,414 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/descriptive_amount_analysis_20250204.csv
-2025-02-04 04:34:50,414 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/descriptive_demographic_analysis_20250204.csv
-2025-02-04 04:34:50,414 - descriptive_analysis - INFO - Analyse descriptive terminée
-2025-02-04 04:34:50,414 - temporal_analysis - INFO - Début de l'analyse temporelle
-2025-02-04 04:34:50,450 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/temporal_daily_analysis_20250204.csv
-2025-02-04 04:34:50,451 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/temporal_fraud_temporal_20250204.csv
-2025-02-04 04:34:50,451 - temporal_analysis - INFO - Analyse temporelle terminée
-2025-02-04 04:34:50,451 - fraud_analysis - INFO - Début de l'analyse des fraudes
-2025-02-04 04:34:50,525 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/fraud_amount_fraud_20250204.csv
-2025-02-04 04:34:50,526 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/fraud_merchant_fraud_20250204.csv
-2025-02-04 04:34:50,526 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/fraud_category_fraud_20250204.csv
-2025-02-04 04:34:50,527 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/fraud_demographic_fraud_20250204.csv
-2025-02-04 04:34:50,527 - fraud_analysis - INFO - Analyse des fraudes terminée
-2025-02-04 04:34:50,527 - anomaly_detection - INFO - Début de la détection d'anomalies
-2025-02-04 04:34:50,598 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/anomaly_transaction_anomalies_20250204.csv
-2025-02-04 04:34:50,602 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/anomaly_customer_anomalies_20250204.csv
-2025-02-04 04:34:50,603 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/anomaly_merchant_anomalies_20250204.csv
-2025-02-04 04:34:50,603 - anomaly_detection - INFO - Détection d'anomalies terminée
-2025-02-04 04:34:50,603 - __main__ - INFO - Génération des visualisations
-2025-02-04 04:34:50,603 - visualization - INFO - Génération des visualisations
-2025-02-04 04:34:51,876 - visualization - INFO - Visualisations sauvegardées dans /Users/aubepine/Documents/Code/R6C05 Data/Results/Figures
-2025-02-04 04:34:51,876 - __main__ - INFO - Analyse terminée en 2.69 secondes
-2025-02-04 04:34:51,896 - data_loader - INFO - Fermeture de la connexion à la base de données
+2025-02-04 04:51:10,511 - descriptive_analysis - INFO - Début de l'analyse descriptive
+2025-02-04 04:51:10,995 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/descriptive_category_analysis_20250204.csv
+2025-02-04 04:51:10,995 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/descriptive_amount_analysis_20250204.csv
+2025-02-04 04:51:10,995 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/descriptive_demographic_analysis_20250204.csv
+2025-02-04 04:51:10,995 - descriptive_analysis - INFO - Analyse descriptive terminée
+2025-02-04 04:51:10,995 - temporal_analysis - INFO - Début de l'analyse temporelle
+2025-02-04 04:51:11,032 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/temporal_daily_analysis_20250204.csv
+2025-02-04 04:51:11,032 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/temporal_fraud_temporal_20250204.csv
+2025-02-04 04:51:11,032 - temporal_analysis - INFO - Analyse temporelle terminée
+2025-02-04 04:51:11,032 - fraud_analysis - INFO - Début de l'analyse des fraudes
+2025-02-04 04:51:11,107 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/fraud_amount_fraud_20250204.csv
+2025-02-04 04:51:11,107 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/fraud_merchant_fraud_20250204.csv
+2025-02-04 04:51:11,107 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/fraud_category_fraud_20250204.csv
+2025-02-04 04:51:11,108 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/fraud_demographic_fraud_20250204.csv
+2025-02-04 04:51:11,108 - fraud_analysis - INFO - Analyse des fraudes terminée
+2025-02-04 04:51:11,108 - anomaly_detection - INFO - Début de la détection d'anomalies
+2025-02-04 04:51:11,173 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/anomaly_transaction_anomalies_20250204.csv
+2025-02-04 04:51:11,178 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/anomaly_customer_anomalies_20250204.csv
+2025-02-04 04:51:11,178 - utils - INFO - Résultats sauvegardés dans /Users/aubepine/Documents/Code/R6C05 Data/Results/anomaly_merchant_anomalies_20250204.csv
+2025-02-04 04:51:11,178 - anomaly_detection - INFO - Détection d'anomalies terminée
+2025-02-04 04:51:11,178 - __main__ - INFO - Génération des visualisations de base
+2025-02-04 04:51:11,178 - visualization - INFO - Génération des visualisations
+2025-02-04 04:51:12,602 - visualization - INFO - Visualisations sauvegardées dans /Users/aubepine/Documents/Code/R6C05 Data/Results/Figures
+2025-02-04 04:51:12,602 - __main__ - INFO - Génération du dashboard KPI
+2025-02-04 04:51:14,139 - __main__ - INFO - Analyse des patterns temporels
+2025-02-04 04:51:15,357 - __main__ - INFO - Analyse terminée en 5.55 secondes
+2025-02-04 04:51:15,373 - data_loader - INFO - Fermeture de la connexion à la base de données

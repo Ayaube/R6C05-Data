@@ -112,9 +112,29 @@ def create_kpi_dashboard():
     gender_kpis['gender'] = gender_kpis['gender'].replace({
         'F': 'Femme', 'M': 'Homme', 'E': 'Entreprise', 'U': 'Inconnu'
     })
-    ax_gender.pie(gender_kpis['transactions'], labels=gender_kpis['gender'],
-                 autopct='%1.1f%%')
+    
+    # Trier par volume décroissant pour une meilleure lisibilité
+    gender_kpis = gender_kpis.sort_values('transactions', ascending=False)
+    
+    # Utiliser un graphique en barres au lieu d'un camembert
+    colors = ['#FF9999', '#66B2FF', '#99FF99', '#FFCC99']
+    bars = ax_gender.bar(range(len(gender_kpis)), gender_kpis['transactions'], 
+                        color=colors)
+    
+    # Ajouter les pourcentages sur les barres
+    total = gender_kpis['transactions'].sum()
+    for bar in bars:
+        height = bar.get_height()
+        percentage = (height/total) * 100
+        ax_gender.text(bar.get_x() + bar.get_width()/2., height,
+                      f'{percentage:.1f}%',
+                      ha='center', va='bottom')
+    
+    # Personnaliser l'apparence
+    ax_gender.set_xticks(range(len(gender_kpis)))
+    ax_gender.set_xticklabels(gender_kpis['gender'], rotation=45)
     ax_gender.set_title('Répartition des Transactions par Genre')
+    ax_gender.set_ylabel('Nombre de Transactions')
     
     # 5. Montant moyen par catégorie (bas gauche)
     ax_amount = fig.add_subplot(gs[2, 0])

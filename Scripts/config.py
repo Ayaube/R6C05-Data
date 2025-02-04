@@ -3,21 +3,26 @@ Configuration globale pour l'analyse des données bancaires
 """
 
 import os
+import logging
 from pathlib import Path
 
 # Chemins des données
 ROOT_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-DATA_DIR = ROOT_DIR / 'Dataset'
 RESULTS_DIR = ROOT_DIR / 'Results'
 FIGURES_DIR = RESULTS_DIR / 'Figures'
+SQLITE_DIR = ROOT_DIR / 'SQLite'
 
 # Création des dossiers nécessaires
 RESULTS_DIR.mkdir(exist_ok=True)
 FIGURES_DIR.mkdir(exist_ok=True)
+SQLITE_DIR.mkdir(exist_ok=True)
 
-# Fichiers de données
-DATA_FILE = DATA_DIR / 'big.csv'
-DATA_FILE_SMALL = DATA_DIR / 'small.csv'
+# Base de données SQLite
+DB_PATH = SQLITE_DIR / 'bankdata.db'
+
+# Configuration du logging
+LOGGING_LEVEL = logging.INFO
+LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 
 # Configuration des graphiques
 FIGURE_SIZE = (12, 8)

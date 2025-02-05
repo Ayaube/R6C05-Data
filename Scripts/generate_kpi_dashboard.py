@@ -38,12 +38,18 @@ def get_general_kpis():
 def get_category_kpis():
     """Récupère les KPIs par catégorie"""
     query = """
+    WITH fraud_totals AS (
+        SELECT SUM(fraud) as total_frauds
+        FROM transactions
+    )
     SELECT 
         category,
         COUNT(*) AS transactions,
         ROUND(SUM(amount), 2) AS volume,
         ROUND(AVG(amount), 2) AS avg_amount,
-        ROUND(AVG(fraud) * 100, 2) AS fraud_rate
+        SUM(fraud) as fraud_count,
+        ROUND(AVG(fraud) * 100, 2) AS fraud_rate,
+        ROUND(SUM(fraud) * 100.0 / (SELECT total_frauds FROM fraud_totals), 2) AS fraud_distribution
     FROM transactions
     GROUP BY category
     ORDER BY volume DESC;
@@ -101,11 +107,42 @@ def create_kpi_dashboard():
     sns.barplot(data=top_categories, y='category', x='volume', ax=ax_categories)
     ax_categories.set_title('Top 5 Catégories par Volume (€)')
     
-    # 3. Taux de fraude par catégorie (milieu centre)
+    # 3. Analyse des fraudes par catégorie (milieu centre)
     ax_fraud = fig.add_subplot(gs[1, 1])
-    top_fraud = category_kpis.nlargest(5, 'fraud_rate')
-    sns.barplot(data=top_fraud, y='category', x='fraud_rate', ax=ax_fraud)
-    ax_fraud.set_title('Top 5 Catégories par Taux de Fraude (%)')
+    
+    # Sélectionner les 6 catégories avec le plus haut taux de fraude
+    top_fraud = category_kpis.nlargest(6, 'fraud_rate')
+    
+    # Créer un graphique à barres empilées
+    x = range(len(top_fraud))
+    width = 0.35
+    
+    # Première série de barres : Taux de fraude dans la catégorie
+    bars1 = ax_fraud.barh(x, top_fraud['fraud_rate'], width, 
+                         label='Taux de fraude dans la catégorie',
+                         color='lightcoral')
+    
+    # Deuxième série de barres : Distribution des fraudes
+    bars2 = ax_fraud.barh([i + width for i in x], top_fraud['fraud_distribution'], width,
+                         label='% du total des fraudes',
+                         color='lightblue')
+    
+    # Ajouter les valeurs sur les barres
+    def add_labels(bars):
+        for bar in bars:
+            width = bar.get_width()
+            ax_fraud.text(width, bar.get_y() + bar.get_height()/2,
+                         f'{width:.1f}%', ha='left', va='center')
+    
+    add_labels(bars1)
+    add_labels(bars2)
+    
+    # Personnaliser l'apparence
+    ax_fraud.set_yticks([i + width/2 for i in x])
+    ax_fraud.set_yticklabels(top_fraud['category'])
+    ax_fraud.set_title('Top 6 Catégories par Taux de Fraude')
+    ax_fraud.set_xlabel('Pourcentage (%)')
+    ax_fraud.legend()
     
     # 4. Distribution par genre (milieu droite)
     ax_gender = fig.add_subplot(gs[1, 2])

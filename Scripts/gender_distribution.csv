@@ -1,0 +1,5 @@
+gender,total_transactions,montant_moyen,fraud_rate
+E,1178,36.63,0.59
+F,324565,39.21,1.47
+M,268385,36.31,0.91
+U,515,31.51,0.0

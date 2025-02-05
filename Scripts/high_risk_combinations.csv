@@ -1,0 +1,11 @@
+category,merchant,total_transactions,fraudulent_transactions,fraud_rate
+es_leisure,M1294758098,191,184,96.34
+es_leisure,M3697346,308,290,94.16
+es_hotelservices,M1873032707,250,216,86.4
+es_travel,M732195782,608,518,85.2
+es_sportsandtoys,M980657600,1769,1472,83.21
+es_hotelservices,M1353266412,78,64,82.05
+es_hotelservices,M857378720,122,92,75.41
+es_hotelservices,M2011752106,244,166,68.03
+es_sportsandtoys,M17379832,282,178,63.12
+es_home,M2122776122,341,200,58.65

@@ -1,0 +1,16 @@
+category,total_transactions,fraudulent_transactions,fraud_rate,fraudulent_amount
+es_leisure,499,474,94.99,142335.98
+es_travel,728,578,79.4,1537944.06
+es_sportsandtoys,4002,1982,49.53,684517.02
+es_hotelservices,1744,548,31.42,231159.19
+es_otherservices,912,228,25.0,72155.07
+es_home,1986,302,15.21,138160.42
+es_health,16133,1696,10.51,690325.15
+es_tech,2370,158,6.67,65613.31
+es_wellnessandbeauty,15086,718,4.76,164725.38
+es_hyper,6098,280,4.59,47391.52
+es_barsandrestaurants,6373,120,1.88,19691.12
+es_fashion,6454,116,1.8,28652.95
+es_contents,885,0,0.0,0.0
+es_food,26254,0,0.0,0.0
+es_transportation,505119,0,0.0,0.0

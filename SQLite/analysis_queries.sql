@@ -28,7 +28,7 @@ FROM transactions;
 -- ============================================================================
 
 -- Répartition des transactions et taux de fraude par genre
-SELECT 
+SELECT
     gender,
     COUNT(*) AS nombre_transactions,
     ROUND(SUM(amount), 2) AS volume_total,
@@ -57,7 +57,7 @@ ORDER BY nombre_transactions DESC;
 -- ============================================================================
 
 -- Statistiques par catégorie
-SELECT 
+SELECT
     category,
     COUNT(*) AS nombre_transactions,
     ROUND(SUM(amount), 2) AS volume_total,
@@ -90,15 +90,48 @@ ORDER BY volume_total DESC;
 | es_otherservices          | 912               | 123923.95    | 135.88        | 228          | 25          | 0.15                    |
 | es_contents               | 885               | 39424.6      | 44.55         | 0            | 0           | 0.15                    |
 +---------------------------+-------------------+--------------+---------------+--------------+-------------+-------------------------+
-
 */
+
+-- Répartition des volumes par catégorie :
+SELECT
+    category,
+    ROUND(SUM(amount), 2) AS total_volume,
+    ROUND((SUM(amount) * 100.0 / (SELECT SUM(amount) FROM transactions)), 2) AS volume_percentage
+FROM transactions
+GROUP BY category
+ORDER BY volume_percentage DESC;
+
+/*
+==> Résultats :
++------------------------+---------------+--------------------+--------------------------+----------------------+
+| category               | nombre_fraudes | taux_fraude_categorie | pourcentage_total_fraudes | montant_moyen_fraudes |
++------------------------+---------------+--------------------+--------------------------+----------------------+
+| es_sportsandtoys       | 1982          | 49.53              | 27.53                    | 345.37               |
+| es_health              | 1696          | 10.51              | 23.56                    | 407.03               |
+| es_wellnessandbeauty   | 718           | 4.76               | 9.97                     | 229.42               |
+| es_travel              | 578           | 79.4               | 8.03                     | 2660.8               |
+| es_hotelservices       | 548           | 31.42              | 7.61                     | 421.82               |
+| es_leisure             | 474           | 94.99              | 6.58                     | 300.29               |
+| es_home                | 302           | 15.21              | 4.19                     | 457.48               |
+| es_hyper               | 280           | 4.59               | 3.89                     | 169.26               |
+| es_otherservices       | 228           | 25                 | 3.17                     | 316.47               |
+| es_tech                | 158           | 6.67               | 2.19                     | 415.27               |
+| es_barsandrestaurants  | 120           | 1.88               | 1.67                     | 164.09               |
+| es_fashion             | 116           | 1.8                | 1.61                     | 247.01               |
+| es_contents            | 0             | 0                  | 0                        | null                 |
+| es_food                | 0             | 0                  | 0                        | null                 |
+| es_transportation      | 0             | 0                  | 0                        | null                 |
++------------------------+---------------+--------------------+--------------------------+----------------------+
+ */
+
+
 
 -- ============================================================================
 -- ÉVOLUTION TEMPORELLE
 -- ============================================================================
 
 -- Évolution du nombre de transactions et du volume par step
-SELECT 
+SELECT
     step,
     COUNT(*) AS nombre_transactions,
     ROUND(SUM(amount), 2) AS volume_total,
@@ -192,7 +225,7 @@ WITH fraud_totals AS (
     SELECT SUM(fraud) as total_frauds
     FROM transactions
 )
-SELECT 
+SELECT
     category,
     SUM(fraud) AS nombre_fraudes,
     ROUND(AVG(fraud) * 100, 2) AS taux_fraude_categorie,
@@ -231,7 +264,7 @@ WITH fraud_totals AS (
     SELECT SUM(fraud) as total_frauds
     FROM transactions
 )
-SELECT 
+SELECT
     gender,
     SUM(fraud) AS nombre_fraudes,
     ROUND(AVG(fraud) * 100, 2) AS taux_fraude_genre,
@@ -259,8 +292,8 @@ ORDER BY nombre_fraudes DESC;
 
 -- Distribution des transactions et fraudes par tranche de montant
 WITH amount_ranges AS (
-    SELECT 
-        CASE 
+    SELECT
+        CASE
             WHEN amount <= 10 THEN '0-10€'
             WHEN amount <= 20 THEN '10-20€'
             WHEN amount <= 50 THEN '20-50€'
@@ -278,7 +311,7 @@ fraud_totals AS (
     SELECT SUM(fraud) as total_frauds
     FROM transactions
 )
-SELECT 
+SELECT
     tranche_montant,
     COUNT(*) AS nombre_transactions,
     ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM transactions), 2) AS pourcentage_transactions,
